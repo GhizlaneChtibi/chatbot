@@ -12,7 +12,7 @@ load_dotenv()
 groq_api_key= os.getenv("GROQ_API_KEY")
 mongo_uri= os.getenv("MONGODB_URI")
 
-client=MongoClient("mongodb://localhost:27017")
+client=client = MongoClient(mongo_uri)
 db = client["chat"]
 collection = db["users"]
 
@@ -34,7 +34,7 @@ app.add_middleware(
 
 prompt = ChatPromptTemplate.from_messages(
     [
-        ("system","You are a fitness bot, tell me the answer with respect to the fitness things."),
+        ("system","You are an AI study assistant. Help students with their academic questions clearly and accurately."),
         ("placeholder","{history}"),
         ("user","{question}")
     ]
